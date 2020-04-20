@@ -1,8 +1,13 @@
 const port = process.env.PORT || 8000;
 
 const express = require('express');
+const projectsRouter = require('./routers/projectsRouter');
+const acitonsRouter = require('./routers/actionsRouter');
+
 const server = express();
 server.use(express.json());
+server.use('/projects', projectsRouter);
+server.use('/actions', acitonsRouter);
 
 server.get('/', (req, res) => {
     res.send(`<h1>Node api challenge</h1>`);
